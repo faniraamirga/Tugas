@@ -236,12 +236,15 @@ set_grid(tbl2, [Cm(5.0), Cm(4.5), Cm(6.5)])
 assert sum(a for _, a, _ in skenario) == HARGA_AKHIR and sum(b for _, _, b in skenario) == HARGA_AKHIR
 para("Tabel 2. Nilai tambah per bungkus pada dua jalur penjualan", italic=True, align="center", size=10, space_after=8)
 
-para("Sumber angka: harga pisang berlin di tingkat petani Rp10.000 dan di pedagang Rp15.000 per tandan (Suara "
-     "Indonesia, 2022) serta Rp20.000 sampai Rp35.000 per tandan di pasar induk (Jatimnow, 2020), saya "
-     "sesuaikan ke harga Palopo sekarang dan dibagi per sisir; harga dompo Rp10.000 sampai Rp20.000 per bungkus "
-     "dari kios oleh-oleh di Luwu Timur (Jadesta Kemenpar) dan toko daring Makassar; komposisi biaya tepung, "
-     "minyak, dan kemasan dari studi nilai tambah sale pisang skala rumah tangga (Yandra dkk., 2025; Dyah, "
-     "2025). Semua angka dibulatkan dan masih perlu dikonfirmasi ke Thary, pedagang pasar, dan toko.",
+para("Sumber angka: harga pisang berlin di tingkat petani Rp10.000 dan di pedagang Rp15.000 per tandan (Hairon, "
+     "2022) serta Rp20.000 sampai Rp35.000 per tandan berisi lima sampai enam sisir di pasar induk (Jatimnow, "
+     "2020), saya sesuaikan ke harga sekarang dan dibagi per sisir; pisang kepok di pasar Makassar Rp15.000 per "
+     "sisir pada Februari 2026 (Macassar.id, 2026), dan pisang berlin yang lebih kecil saya taksir setengahnya; "
+     "dompo Rp10.000 per kepak di pasar tradisional dan dua sampai tiga kali lipat setelah dikemas (ZonaSultra, "
+     "2019) serta Rp10.000 di kios oleh-oleh Luwu Timur (Kementerian Pariwisata); standing pouch kraft berjendela "
+     "Rp500 sampai Rp2.100 per lembar (Kemasan Retail, 2021); komposisi biaya tepung, minyak, dan kemasan dari "
+     "studi nilai tambah sale pisang skala rumah tangga (Yandra dkk., 2025; Dyah, 2025; Prabaningrum dkk., "
+     "2022). Semua angka dibulatkan dan masih perlu dikonfirmasi ke Thary, pedagang pasar, dan toko.",
      italic=True, size=10)
 
 # ---------- 4. Analisis per pelaku ----------
@@ -261,7 +264,10 @@ para("Thary menerima Rp3.500 per bungkus kalau menitip di toko. Untuk itu ia mem
      "membelah 12 sampai 15 buah, menjemur dua sampai tiga hari sambil menjaga dari hujan dan debu, menggoreng, "
      "mengemas, dan mengurus izin PIRT serta label. Risiko produk yang ditolak toko atau kedaluwarsa di rak juga "
      "ada di pundaknya. Dari sisi jam kerja, ia jelas yang paling banyak bekerja per bungkus, tetapi "
-     "bagiannya justru paling kecil di antara empat pelaku pada jalur toko.")
+     "bagiannya justru paling kecil di antara empat pelaku pada jalur toko. Ada satu celah yang sudah ia pakai "
+     "sejak awal: pisang yang lewat matang biasanya dilepas pedagang sekitar Rp5.000 per sisir. Kalau pisang "
+     "seperti itu yang dipakai, bagian Thary naik Rp3.000 menjadi Rp6.500 per bungkus, dan harga pokoknya "
+     "lebih rendah daripada pembuat dompo lain yang membeli pisang segar.")
 para("Toko oleh-oleh menerima Rp5.000, bagian terbesar, untuk memajang dan menjual. Toko membayar sewa dan "
      "menanggung barang yang tidak laku, tetapi tidak membuat apa pun. Kekuatannya ada pada lokasi dan "
      "informasi: toko tahu siapa perantau yang datang, kapan musim mudik, dan berapa harga yang masih dianggap "
@@ -341,11 +347,18 @@ refs = [
     "https://suaraindonesia.co.id/news/features/62b2aebc1a9e4/di-jember-pisang-berlin-dijual-sangat-murah",
     "Jatimnow. (2020, 29 Oktober). Imut dan rasa sedikit masam, pisang barlin di PIOS diburu pengunjung. "
     "https://jatimnow.com/baca-30937-imut-dan-rasa-sedikit-masam-pisang-barlin-di-pios-diburu-pengunjung",
+    "Kemasan Retail. (2021). Kemasan standing pouch kraft window zipper [Katalog produk]. "
+    "https://kemasanretail.com/product/kemasan-standing-pouch-kraft-window-zipper-16x24-750g/",
     "Kementerian Pariwisata. (t.t.). Produk wisata dompo pisang, Desa Wisata Dermaga Desa Pasi-pasi, Luwu Timur. "
     "Jadesta. https://jadesta.kemenpar.go.id/paket/dompo_pisang",
+    "Macassar.id. (2026, 20 Februari). Ini harga bahan pangan saat Ramadhan. "
+    "https://macassar.id/2026/02/20/ini-harga-bahan-pangan-saat-ramadhan/",
     "Nandini, A. B. (2024, 12 November). Dompis Berlin Thary, olahan pisang khas Kota Palopo Sulsel yang bikin "
     "nagih. Tribun Timur. https://makassar.tribunnews.com/2024/11/12/dompis-berlin-thary-olahan-pisang-khas-kota-"
     "palopo-sulsel-yang-bikin-nagih",
+    "Prabaningrum, R., Sutrisno, J., & Khairiyakh, R. (2022). Analisis usaha industri sale pisang skala rumah tangga "
+    "di Kecamatan Karangpucung, Kabupaten Cilacap. Jurnal Kewirausahaan dan Bisnis, 27(2). "
+    "https://jurnal.uns.ac.id/kewirausahaan-dan-bisnis/article/view/64392",
     "Putri, Q. A. R. (2026). Pertemuan 3: Ekosistem dan rantai nilai [Slide perkuliahan Ekonomi Kreatif MBS12523]. "
     "Manajemen Bisnis Syariah, FEBI UIN Palopo.",
     "Universitas Muhammadiyah Malang. (2003). Pengaruh suhu dan lama pengeringan pisang terhadap mutu sale pisang. "
@@ -353,6 +366,8 @@ refs = [
     "Yandra, H. M., Hakimi, R., & Raesi, S. (2025). Analisis nilai tambah pengolahan pisang (Musa paradisiaca L.) "
     "pada UMKM Heni Pisang Sale di Nagari IV Koto, Kecamatan Pulau Punjung, Kabupaten Dharmasraya. JAS (Jurnal "
     "Agri Sains), 9(1). https://ojs.umb-bungo.ac.id/index.php/JAS/article/download/1725/1384",
+    "ZonaSultra. (2019, 9 Mei). Dompo pisang, camilan khas Bombana yang mulai dikembangkan. "
+    "https://zonasultra.id/dompo-pisang-camilan-khas-bombana-yang-mulai-dikembangkan/",
 ]
 for r_ in refs:
     p = para(r_, size=11, space_after=4)
