@@ -40,7 +40,7 @@ for i, (nama, tahap, beli, jual) in enumerate(aktor):
     else:
         nt = jual - beli
         nilai_tambah.append((nama.replace("\n", " "), nt))
-        beli_txt = "Bahan dibeli:  —" if beli == 0 else "Bahan dibeli: " + rp(beli)
+        beli_txt = "Bahan dibeli: tidak ada" if beli == 0 else "Bahan dibeli: " + rp(beli)
         if i == 2:
             beli_txt += "\n(biji 240 g Rp24.000\n+ kemasan Rp3.000)"
         ax.text(x + w / 2, 52, beli_txt, ha="center", va="center", fontsize=9.8)
@@ -54,14 +54,14 @@ for i, (nama, tahap, beli, jual) in enumerate(aktor):
 # Tahap kelima: konservasi (garis putus-putus di bawah rantai)
 ax.add_patch(FancyBboxPatch((x0, 2), 5 * w + 4 * gap, 11, boxstyle="round,pad=0.3,rounding_size=1.5",
                             fc="#f1f8e9", ec="#666", lw=1, ls="--"))
-ax.text(50, 7.5, "KONSERVASI: kulit buah kopi jadi pupuk kebun · ampas seduhan jadi kompos · "
-        "kemasan aluminium foil belum didaur ulang (ditinggalkan rantai sebagai sampah)",
+ax.text(50, 7.5, "KONSERVASI: kulit buah kopi kembali ke kebun sebagai pupuk, ampas seduhan bisa jadi kompos, "
+        "kemasan aluminium foil belum didaur ulang dan tertinggal sebagai sampah",
         ha="center", va="center", fontsize=9.6, color="#333")
 
 fig.text(0.5, 0.965, "Rantai nilai 1 bungkus kopi arabika Latimojong (200 g) yang dijual di Kota Palopo",
          ha="center", fontsize=15, fontweight="bold")
-fig.text(0.5, 0.935, "Alur dari bahan mentah sampai ke tangan pembeli · angka perkiraan, "
-         "nilai tambah = harga jual − bahan yang dibeli", ha="center", fontsize=10.5, color="#444")
+fig.text(0.5, 0.935, "Alur dari bahan mentah sampai ke tangan pembeli. Angka perkiraan; "
+         "nilai tambah = harga jual dikurangi bahan yang dibeli", ha="center", fontsize=10.5, color="#444")
 
 # Grafik batang nilai tambah
 ax2 = fig.add_axes([0.10, 0.06, 0.60, 0.30])
