@@ -8,14 +8,11 @@ def rp(n):
     return "Rp" + f"{n:,.0f}".replace(",", ".")
 
 HARGA_AKHIR = 20000
-BAHAN_LAIN = 1500      # tepung tapioka, minyak goreng, gas
-KEMASAN = 1800         # standing pouch dan stiker label
-
 # (pelaku, tahap, bahan dibeli, harga jual). Satuan: satu sisir pisang berlin -> satu bungkus dompo 200 g.
 aktor = [
     ("Petani pisang berlin", "KREASI", 0, 3500),
     ("Pedagang pisang\ndi pasar Palopo", "DISTRIBUSI", 3500, 7500),
-    ("Dompis Berlin Thary\n(kupas, jemur, goreng, kemas)", "PRODUKSI", 7500 + BAHAN_LAIN + KEMASAN, 14000),
+    ("Dompis Berlin Thary\n(kupas, jemur, goreng, kemas)", "PRODUKSI", 7500, 14000),
     ("Toko oleh-oleh\nPalopo", "DISTRIBUSI", 14000, HARGA_AKHIR),
     ("Pembeli", "KONSUMSI", HARGA_AKHIR, None),
 ]
@@ -44,10 +41,8 @@ for i, (nama, tahap, beli, jual) in enumerate(aktor):
         nilai_tambah.append((nama.split("\n")[0], nt))
         if beli == 0:
             beli_txt = "Bahan dibeli: tidak ada\n(anakan dan pupuk\ndari kebun sendiri)"
-        elif i == 1:
+        elif i in (1, 2):
             beli_txt = "Bahan dibeli: " + rp(beli) + "\n(1 sisir pisang)"
-        elif i == 2:
-            beli_txt = ("Bahan dibeli: " + rp(beli) + "\n(pisang 1 sisir Rp7.500,\ntepung, minyak, gas Rp1.500,\nkemasan dan label Rp1.800)")
         else:
             beli_txt = "Bahan dibeli: " + rp(beli) + "\n(1 bungkus dompo)"
         ax.text(x + w / 2, 54, beli_txt, ha="center", va="center", fontsize=9.3)
@@ -65,7 +60,7 @@ fig.text(0.5, 0.905, "Dari bahan mentah sampai ke tangan pembeli. Angka perkiraa
          ha="center", fontsize=10.2, color="#444")
 
 fig.savefig("tugas-3/rantai_nilai_dompo_pisang_berlin.png", bbox_inches="tight", facecolor="white")
-total = sum(v for _, v in nilai_tambah) + BAHAN_LAIN + KEMASAN
+total = sum(v for _, v in nilai_tambah)
 assert total == HARGA_AKHIR, total
-assert len({v for _, v in nilai_tambah} | {BAHAN_LAIN + KEMASAN}) == 5, "nilai tambah harus berbeda tiap pelaku"
+assert len({v for _, v in nilai_tambah}) == 4, "nilai tambah harus berbeda tiap pelaku"
 print("ok", nilai_tambah, total)

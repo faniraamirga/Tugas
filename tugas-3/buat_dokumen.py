@@ -7,8 +7,6 @@ from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
 HARGA_AKHIR = 20000
-BAHAN_LAIN = 1500
-KEMASAN = 1800
 GAMBAR = "tugas-3/rantai_nilai_dompo_pisang_berlin.png"
 
 def rp(n):
@@ -113,8 +111,7 @@ para("Gambar 1. Rantai nilai satu bungkus dompo pisang berlin 200 gram (angka pe
 baris = [
     ("Petani pisang berlin", "tidak ada", "Rp3.500\n(1 sisir)", 0, 3500),
     ("Pedagang pisang di pasar Palopo", "Rp3.500", "Rp7.500\n(1 sisir)", 3500, 7500),
-    ("Dompis Berlin Thary", "Rp10.800\n(pisang Rp7.500, tepung, minyak, gas Rp1.500, kemasan dan label Rp1.800)",
-     "Rp14.000\n(1 bungkus 200 g)", 7500 + BAHAN_LAIN + KEMASAN, 14000),
+    ("Dompis Berlin Thary", "Rp7.500\n(1 sisir pisang)", "Rp14.000\n(1 bungkus 200 g)", 7500, 14000),
     ("Toko oleh-oleh Palopo", "Rp14.000", "Rp20.000", 14000, HARGA_AKHIR),
 ]
 tbl = doc.add_table(rows=1, cols=5); tbl.style = "Table Grid"; tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
@@ -126,15 +123,11 @@ for pelaku, beli_txt, jual_txt, beli, jual in baris:
     cells = tbl.add_row().cells
     for i, v in enumerate([pelaku, beli_txt, jual_txt, rp(nt), pct(nt)]):
         cell_text(cells[i], v, bold=(i == 3), center=(i > 0), size=10)
-lain = BAHAN_LAIN + KEMASAN
 cells = tbl.add_row().cells
-for i, v in enumerate(["Pemasok tepung, minyak, gas, kemasan (di luar rantai)", "tidak ada", rp(lain), rp(lain), pct(lain)]):
-    cell_text(cells[i], v, italic=True, center=(i > 0), size=10)
-cells = tbl.add_row().cells
-for i, v in enumerate(["Harga di tangan pembeli", "", rp(HARGA_AKHIR), rp(total_nt + lain), "100%"]):
+for i, v in enumerate(["Harga di tangan pembeli", "", rp(HARGA_AKHIR), rp(total_nt), "100%"]):
     cell_text(cells[i], v, bold=True, center=(i > 0), size=10); shade(cells[i], "F2F2F2")
-set_grid(tbl, [Cm(3.9), Cm(4.0), Cm(3.0), Cm(2.6), Cm(2.5)])
-assert total_nt + lain == HARGA_AKHIR
+set_grid(tbl, [Cm(4.2), Cm(3.4), Cm(3.4), Cm(2.5), Cm(2.5)])
+assert total_nt == HARGA_AKHIR
 para("Tabel 1. Perkiraan harga dan nilai tambah tiap pelaku per bungkus dompo 200 gram",
      italic=True, align="center", size=10, space_after=8)
 para("Angka di atas perkiraan dari harga pisang berlin per tandan di tingkat petani dan pedagang (Hairon, 2022; "
@@ -145,18 +138,22 @@ para("Angka di atas perkiraan dari harga pisang berlin per tandan di tingkat pet
 
 # ---------- Paragraf penutup ----------
 heading("Siapa yang bagiannya paling kecil, dan apakah itu sepadan?")
-para("Bagian paling kecil diambil Thary, Rp3.200 dari Rp20.000, padahal ialah yang membeli pisang, mengupas dan "
-     "membelah belasan buah, menjemur dua sampai tiga hari sambil menjaga dari hujan, menggoreng, mengemas, dan "
-     "mengurus izin PIRT. Toko oleh-oleh yang hanya memajang mendapat Rp6.000, hampir dua kali lipatnya, dan "
-     "pedagang pasar yang memegang pisang dua hari mendapat Rp4.000. Menurut saya pembagian ini tidak sepadan "
-     "dengan kerja dan risiko yang ditanggung. Toko memang membayar sewa dan menanggung barang yang tidak laku, "
-     "tetapi bagiannya besar karena ia memegang informasi pasar: ia tahu siapa perantau yang mencari oleh-oleh dan "
-     "berapa mereka sanggup bayar, sementara Thary di dapur tidak. Ini pola yang sama dengan bakul rotan di kelas, "
-     "semakin dekat ke konsumen semakin besar nilai yang diambil. Bagian petani, Rp3.500 untuk menunggu hampir "
-     "setahun, juga kecil, tetapi petani hampir tidak mengeluarkan biaya tunai dan pisang berlin hanya tanaman "
-     "sela di kebunnya. Yang membuat kasus ini menarik, Thary sudah punya jalan keluar: ketika ia menjual sendiri "
-     "lewat WhatsApp dan Instagram dengan harga yang sama, bagian toko Rp6.000 berpindah ke tangannya dan "
-     "bagiannya menjadi yang terbesar di rantai tanpa pembeli membayar lebih.")
+para("Bagian paling kecil diambil petani, Rp3.500 dari Rp20.000, untuk menanam dan menunggu hampir setahun "
+     "sampai satu tandan siap panen, lalu menjualnya dalam hitungan hari dengan harga berapa pun yang ditawarkan "
+     "pedagang karena pisang matang tidak bisa disimpan. Menurut saya bagian itu terlalu kecil untuk waktu yang "
+     "ditanggung, walaupun biaya tunai petani hampir nol dan pisang berlin hanya tanaman sela di kebunnya. Angka "
+     "yang menurut saya paling tidak sepadan ada di baris Thary. Nilai tambahnya tampak paling besar, "
+     "Rp6.500, tetapi dari angka itu sekitar Rp3.300 habis untuk tepung, minyak, gas, kemasan, dan stiker, "
+     "sehingga yang tersisa untuk kerja mengupas belasan buah, menjemur dua sampai tiga hari sambil menjaga dari "
+     "hujan, menggoreng, mengemas, dan mengurus izin PIRT hanya sekitar Rp3.200. Toko oleh-oleh yang hanya "
+     "memajang mendapat Rp6.000 tanpa biaya bahan apa pun, dan pedagang pasar yang memegang pisang dua hari "
+     "mendapat Rp4.000. Toko memang membayar sewa dan menanggung barang yang tidak laku, tetapi bagiannya besar "
+     "karena ia memegang informasi pasar: ia tahu siapa perantau yang mencari oleh-oleh dan berapa mereka sanggup "
+     "bayar, sementara petani di kebun dan Thary di dapur tidak. Ini pola yang sama dengan bakul rotan di kelas, "
+     "semakin dekat ke konsumen semakin besar nilai yang diambil. Thary sudah menemukan jalan keluarnya: ketika ia "
+     "menjual sendiri lewat WhatsApp dan Instagram dengan harga yang sama, bagian toko Rp6.000 berpindah ke "
+     "tangannya tanpa pembeli membayar lebih. Petani belum punya jalan seperti itu, dan di sanalah bagian yang "
+     "paling perlu dinaikkan.")
 
 # ---------- Referensi ----------
 heading("Referensi")
